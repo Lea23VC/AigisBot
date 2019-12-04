@@ -1,8 +1,10 @@
+require('http').createServer().listen(3000);
+
 const Discord = require('discord.js');
 const client = new Discord.Client();
 const auth = require('./auth.json');
 
-require('http').createServer().listen(3000);
+//require('http').createServer().listen(3000);
 
 
 client.on('ready', () => {
@@ -21,25 +23,43 @@ client.on('message', msg => {
 	//getURL(msg);
   }
 
-  if (msg.content.startsWith('!link')) {
-	  //msg.reply('Awoooooo5');
-	  console.log('awa4');
-	  var res = msg.content.slice(5);
-	  //msg.reply(res);
-	  getURL(msg, res);
-  }
-  
+  //if (msg.content.startsWith('!link')) {
+	  //var res = msg.content.slice(5);
+	  //getURL(msg, res);
+  //}
+
+	if (msg.content.startsWith('!gba')) {
+		var res = msg.content.slice(5);
+		getURL(msg, res, "11ENyQEKdqnQNYTQV-VAUXa3xFyZVY12n");
+	}
+
+	if (msg.content.startsWith('!ds')) {
+		var res = msg.content.slice(4);
+		getURL(msg, res, "1dVLNOSJk9_GC0PISzlZAKRT81c1iJqXg");
+	}
+
+	if (msg.content.startsWith('!nes')) {
+		var res = msg.content.slice(5);
+		getURL(msg, res, "1UP1eQSsWjLYm8PvyLLYlV8idZMiYSNAV");
+	}
+
+	if (msg.content.startsWith('!smt')) {
+		var res = msg.content.slice(5);
+		getURL(msg, res, "1ZRCKSowl3XyXg7v-8hjAd4qPpS3mrEUY");
+	}
+
+
   
 });
 
 
 
-function getURL(msg, names){
+function getURL(msg, names, folderId){
 	
 	const { google } = require('googleapis');
 	const credentials = require('./credentials.json');
 	const scopes = [
-  		'https://www.googleapis.com/auth/drive'
+		'https://www.googleapis.com/auth/drive'
 	];
 	const auth = new google.auth.JWT(
 		credentials.client_email, null,
@@ -58,20 +78,32 @@ function getURL(msg, names){
 	//search1 = names;
 	//msg.reply(names+ " " + 'funcion');
 
-	var folderId = "11ENyQEKdqnQNYTQV-VAUXa3xFyZVY12n";
+	//var folderId = "11ENyQEKdqnQNYTQV-VAUXa3xFyZVY12n";
 	
 	var awooo = "Mega";
-	drive.files.list({ q: "name contains '" + names + "'" }, (err, res) => {	
+	drive.files.list({ q: "name contains '" + names + "' and '" + folderId + "' in parents", fields: 'files(id, name, parents)', space: 'appDataFolder'}, (err, res) => {
+	
+
+
+		//name contains '" + names + "'   parents in '" + folderId + "'
 	if (err) throw err;
 		const files = res.data.files;
+		console.log(files + " awooooo");
 		if (files.length) {
 
+			
+
 			files.map((file) => {
+			console.log(file.name);
+			console.log(file.parents);
+			//console.log(folderIds);
 			//msg.reply('Awoooooo');
+
 			msg.author.send(file.name + " " +"https://drive.google.com/uc?export=download&id=" + file.id);
 		});
 		msg.reply("The games have been sent, please check your PMs")
-		return files;
+		console.log("Busqueda termianada?");
+		//return files;
   } else {
     console.log('No files found');
 	msg.reply("No files found");
@@ -85,6 +117,6 @@ function getURL(msg, names){
 
 
 client.login(auth.token);
-client.login(process.env.token);
+//client.login(process.env.token);
 
 
