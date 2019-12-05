@@ -18,7 +18,7 @@ client.on('ready', () => {
 
 client.on('message', msg => {
 
-	if (msg.content === 'Aigis, mata a piñera') {
+	if (msg.content === 'Aigis, mata a Piñera') {
 		msg.reply('El Presidente Sebastian Piñera ha sido eliminado.');
 		console.log('awa');
 		
@@ -76,6 +76,9 @@ client.on('message', msg => {
 		.setColor('#275BF0')
 		msg.channel.send(embed)
 	}
+
+
+
 	
 
 
