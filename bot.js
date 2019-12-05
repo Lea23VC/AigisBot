@@ -48,7 +48,7 @@ client.on('message', msg => {
 		getURL(msg, res, "1ZRCKSowl3XyXg7v-8hjAd4qPpS3mrEUY");
 	}
 
-
+	return;
   
 });
 
