@@ -8,7 +8,8 @@ const auth = require('./auth.json');
 
 
 client.on('ready', () => {
-    console.log(`Logged in as ${client.user.tag}!`);
+	console.log(`Logged in as ${client.user.tag}!`);
+	client.user.setActivity('Chupalo Karol Dance', { type: 'WATCHING' });
 });
 
 
@@ -17,8 +18,14 @@ client.on('ready', () => {
 
 client.on('message', msg => {
 
+	if (msg.content === 'Aigis, mata a piñera') {
+		msg.reply('El Presidente Sebastian Piñera ha sido eliminado.');
+		console.log('awa');
+		
+		//getURL(msg);
+	  }
 
-	client.user.setActivity('Chupalo Karol Dance', { type: 'WATCHING' });
+
 
   if (msg.content === 'ping') {
     msg.reply('pong');
