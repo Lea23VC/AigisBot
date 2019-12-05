@@ -14,7 +14,12 @@ client.on('ready', () => {
 
 
 
+
 client.on('message', msg => {
+
+
+	client.user.setActivity('Chupalo Karol Dance', { type: 'WATCHING' });
+
   if (msg.content === 'ping') {
     msg.reply('pong');
 	msg.reply('Awoooooo');
