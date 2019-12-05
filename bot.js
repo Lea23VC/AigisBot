@@ -68,6 +68,16 @@ client.on('message', msg => {
 		//msg.channel.send(embed)
 	}
 
+	if (msg.content === '!desfunar') {
+		// Remove the "var" line; it isn't necessary.
+		let embed = new Discord.RichEmbed()
+		// Replace "message.member" with "message.author"
+		.setImage("https://i.imgur.com/dr9IspB.png")
+		.setColor('#275BF0')
+		msg.channel.send(embed)
+	}
+	
+
 
 
 	if (msg.content.startsWith('!gba')) {
