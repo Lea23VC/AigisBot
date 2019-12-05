@@ -28,6 +28,36 @@ client.on('message', msg => {
 	  //getURL(msg, res);
   //}
 
+	  
+	if (msg.content === '!myavatar') {
+		// Remove the "var" line; it isn't necessary.
+		let embed = new Discord.RichEmbed()
+		// Replace "message.member" with "message.author"
+		.setImage(msg.author.avatarURL)
+		.setColor('#275BF0')
+		msg.channel.send(embed)
+	}
+
+	if (msg.content.startsWith('!avatar')) {
+		//console.log(msg.mentions.users);
+		// Remove the "var" line; it isn't necessary.
+		
+		// Replace "message.member" with "message.author"
+		let embed
+		const avatarList = msg.mentions.users.map(user => { //convierte el mapa de usuarios en una lista, lo cual recorre con la variable "user"
+			embed = new Discord.RichEmbed()
+			.setImage(user.avatarURL)
+			//user.
+			.setColor('#275BF0')
+			msg.channel.send(embed)
+		});
+		//msg.channel.send(avatarList);
+		
+		//msg.channel.send(embed)
+	}
+
+
+
 	if (msg.content.startsWith('!gba')) {
 		var res = msg.content.slice(5);
 		getURL(msg, res, "11ENyQEKdqnQNYTQV-VAUXa3xFyZVY12n");
