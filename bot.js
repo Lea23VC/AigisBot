@@ -116,10 +116,10 @@ client.on('message', msg => {
 		getURL(msg, res, "11ENyQEKdqnQNYTQV-VAUXa3xFyZVY12n");
 	}
 
-	if (msg.content.startsWith('!gb')) {
-		var res = msg.content.slice(4);
-		getURL(msg, res, "1Y5wfpQCGq73pkK8z44A4LryotFwjLyCt");
-	}
+	//if (msg.content.startsWith('!gb')) {  Remover hasta encontrar una manera de que !gb no busque cuando se llama a !gba
+		//var res = msg.content.slice(4);
+		//getURL(msg, res, "1Y5wfpQCGq73pkK8z44A4LryotFwjLyCt");
+	//}
 
 	if (msg.content.startsWith('!ds') || msg.content.startsWith('!nds')) {
 		var res;
