@@ -47,7 +47,7 @@ client.on('message', msg => {
 		.setThumbnail('https://i.imgur.com/dbyNfIs.png')
 		//.addBlankField()
 		.addField('Nintendo Entertainment System', '`!nes` or `!famicom`')
-		.addField('Super Nintendo (not available)', '`!snes` or `!sfc`')
+		.addField('Super Nintendo', '`!snes` or `!sfc`')
 		.addField('Gamecube', '`!gamecube` or `!gc`')
 		.addField('Gameboy, Gameboy Color and Gameboy Advance', '`!gb`, `!gbc` and `!gba`')
 		.addField('Nintendo DS', '`!ds` or `!nds`')
@@ -116,10 +116,21 @@ client.on('message', msg => {
 		getURL(msg, res, "11ENyQEKdqnQNYTQV-VAUXa3xFyZVY12n");
 	}
 
-	//if (msg.content.startsWith('!gb')) {  Remover hasta encontrar una manera de que !gb no busque cuando se llama a !gba
-		//var res = msg.content.slice(4);
-		//getURL(msg, res, "1Y5wfpQCGq73pkK8z44A4LryotFwjLyCt");
-	//}
+	if (msg.content.startsWith('!snes') || msg.content.startsWith('!sfc') ) {
+		var res;
+		if (msg.content.startsWith('!snes')) {
+			res = msg.content.slice(6);
+		}
+		else {
+			res = msg.content.slice(5);
+		}
+		getURL(msg, res, "1bhZ-dmKGEiWuo4UVH-PFhqf6lvq-uAcj");
+	}
+
+	if (msg.content.startsWith('!gb') && msg.content[3]===" ") {  //Remover hasta encontrar una manera de que !gb no busque cuando se llama a !gba
+		var res = msg.content.slice(4);
+		getURL(msg, res, "1Y5wfpQCGq73pkK8z44A4LryotFwjLyCt");
+	}
 
 	if (msg.content.startsWith('!ds') || msg.content.startsWith('!nds')) {
 		var res;
