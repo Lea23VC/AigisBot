@@ -108,7 +108,10 @@ client.on('message', msg => {
 
 
 	
-
+	if (msg.content.startsWith('!gbc')) {
+		var res = msg.content.slice(5);
+		getURL(msg, res, "1aPdNOt1kqXJvND2rWOOxe4l4l5iL8nJO");
+	}
 
 
 	if (msg.content.startsWith('!gba')) {
