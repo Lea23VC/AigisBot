@@ -8,7 +8,8 @@
     "discord.js": "^11.5.1",
     "dotenv": "^8.2.0",
     "googleapis": "^27.0.0",
-    "nodejs-sh": "^0.2.0"
+    "nodejs-sh": "^0.2.0",
+    "qrcode": "^1.4.4"
   },
   "devDependencies": {},
   "scripts": {

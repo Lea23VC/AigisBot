@@ -35,6 +35,34 @@ client.on('message', msg => {
 	//getURL(msg);
   }
 
+	if (msg.content === '!halp') {
+
+		let embed = new Discord.RichEmbed()
+
+		.setColor('#0099ff')
+		.setTitle('Rom searching commands')
+		//.setURL('https://discord.js.org/')
+		.setAuthor('AigisBot', 'https://i.imgur.com/dbyNfIs.png')
+		.setDescription('piracy=bad, unless you are poor')
+		.setThumbnail('https://i.imgur.com/dbyNfIs.png')
+		//.addBlankField()
+		.addField('Nintendo Entertainment System', '`!nes` or `!famicom`')
+		.addField('Super Nintendo (not available)', '`!snes` or `!sfc`')
+		.addField('Gamecube', '`!gamecube` or `!gc`')
+		.addField('Gameboy, Gameboy Color and Gameboy Advance', '`!gb`, `!gbc` and `!gba`')
+		.addField('Nintendo DS', '`!ds` or `!nds`')
+		.addField('Touhou main games (not available)', '`!touhou` or `!tojas`')
+		
+		//.addField('Inline field title', 'Some value here', true)
+		//.addField('Inline field title', 'Some value here', true)
+		//.addField('Inline field title', 'Some value here', true)
+		.setImage('https://i.imgur.com/Irk8vtj.png')
+		.setTimestamp()
+		//.setFooter('Some footer text here', 'https://i.imgur.com/wSTFkRM.png')
+
+		msg.channel.send(embed)
+  }
+
   //if (msg.content.startsWith('!link')) {
 	  //var res = msg.content.slice(5);
 	  //getURL(msg, res);
@@ -88,14 +116,42 @@ client.on('message', msg => {
 		getURL(msg, res, "11ENyQEKdqnQNYTQV-VAUXa3xFyZVY12n");
 	}
 
-	if (msg.content.startsWith('!ds')) {
-		var res = msg.content.slice(4);
+	if (msg.content.startsWith('!ds') || msg.content.startsWith('!nds')) {
+		var res;
+		if (msg.content.startsWith('!ds')) {
+			res = msg.content.slice(4);
+		}
+		else {
+			res = msg.content.slice(5);
+		}
+
 		getURL(msg, res, "1dVLNOSJk9_GC0PISzlZAKRT81c1iJqXg");
 	}
 
-	if (msg.content.startsWith('!nes')) {
-		var res = msg.content.slice(5);
+	if (msg.content.startsWith('!nes') || msg.content.startsWith('!famicom')) {
+		var res;
+		if (msg.content.startsWith('!nes')) {
+			res = msg.content.slice(5);
+		}
+		else {
+			res = msg.content.slice(9);
+		}
+
+		//var res = msg.content.slice(5);
 		getURL(msg, res, "1UP1eQSsWjLYm8PvyLLYlV8idZMiYSNAV");
+	}
+
+	if (msg.content.startsWith('!gamecube') || msg.content.startsWith('!gc')) {
+		var res;
+		if (msg.content.startsWith('!gamecube')) {
+			res = msg.content.slice(10);
+		}
+		else {
+			res = msg.content.slice(4);
+		}
+
+		//var res = msg.content.slice(4);
+		getURL(msg, res, "1FoQOif8muuqBpKG79ftBY8QcpWZ12ELM");
 	}
 
 	if (msg.content.startsWith('!smt')) {
@@ -157,7 +213,7 @@ function getURL(msg, names, folderId){
 			msg.author.send(file.name + " " +"https://drive.google.com/uc?export=download&id=" + file.id);
 		});
 		msg.reply("The games have been sent, please check your PMs")
-		console.log("Busqueda termianada?");
+		console.log("Busqueda terminada?");
 		//return files;
   } else {
     console.log('No files found');
