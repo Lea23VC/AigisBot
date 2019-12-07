@@ -7,6 +7,7 @@ const auth = require('./auth.json');
 //require('http').createServer().listen(3000);
 
 
+
 client.on('ready', () => {
 	console.log(`Logged in as ${client.user.tag}!`);
 	client.user.setActivity('Chupalo Karol Dance', { type: 'WATCHING' });
@@ -25,7 +26,38 @@ client.on('message', msg => {
 		//getURL(msg);
 	  }
 
+ if (msg.content.startsWith('!silence')) {
+	//var imgflipper = new Imgflipper("Lea23vc", "leandro23");
+	console.log("AWoooo64");
+	let prefix = '!silence';
+	const args = msg.content.slice(prefix.length-1).trim().split(/ +/g);
 
+	args.shift().toLocaleLowerCase();
+
+	console.log(args);
+
+	let text = args.join(" ");
+	let op = text.split(' - ');
+
+	console.log(args);
+
+	var arriba = op[0];
+	//var abajo = op[1];
+	console.log(abajo + " " + arriba );
+	
+	var Imgflipper = require('imgflipper');
+	var imgflipper = new Imgflipper("Lea23vc", "leandro23");
+
+	imgflipper.generateMeme(212777853, arriba.toLocaleLowerCase(), abajo, (err, img) => {
+
+		if(err) return console.log(err);
+
+		msg.channel.send(img);
+
+	});
+
+	//getURL(msg);
+  }
 
   if (msg.content === 'ping') {
     msg.reply('pong');
