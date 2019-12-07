@@ -42,7 +42,7 @@ client.on('message', msg => {
 	console.log(args);
 
 	var arriba = op[0];
-	//var abajo = op[1];
+	var abajo = op[1];
 	console.log(abajo + " " + arriba );
 	
 	var Imgflipper = require('imgflipper');
