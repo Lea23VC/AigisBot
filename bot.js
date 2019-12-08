@@ -231,11 +231,10 @@ client.on('message', msg => {
 		getURL(msg, res, "1FoQOif8muuqBpKG79ftBY8QcpWZ12ELM");
 	}
 
-	if (msg.content.startsWith('!smt')) {
+	if (msg.content.startsWith('!psx')) {
 		var res = msg.content.slice(5);
-		getURL(msg, res, "1ZRCKSowl3XyXg7v-8hjAd4qPpS3mrEUY");
+		getURL(msg, res, "1gKFFrPZ4dRotmWoYt0vtptT_ZJ5IYomw");
 	}
-
 
 
 	return;
@@ -316,7 +315,7 @@ async function salsa(msg) {
 			if (mensaje.attachments && found) {
 				var lastme = mensaje.attachments.forEach(img => {
 					console.log("AAAAGRIA");
-					if (img.url.endsWith(".png") || img.url.endsWith(".jpg")) {
+					if (img.url.endsWith(".png") || img.url.endsWith(".jpg") || img.url.endsWith(".jpeg") || img.url.endsWith(".PNG") || img.url.endsWith(".JPG") ||  img.url.endsWith(".JPEG") ||  img.url.endsWith(".gif") || img.url.endsWith(".GIF")) {
 						//msg.channel.send(img.url);
 						found = false;
 						console.log("AAAAGRIA3");
