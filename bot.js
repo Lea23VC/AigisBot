@@ -95,6 +95,8 @@ client.on('message', msg => {
 		.addField('Gamecube', '`!gamecube` or `!gc`')
 		.addField('Gameboy, Gameboy Color and Gameboy Advance', '`!gb`, `!gbc` and `!gba`')
 		.addField('Nintendo DS', '`!ds` or `!nds`')
+		.addField('PlayStation', '`!psx`')
+
 		//.addField('Touhou main games (not available)', '`!touhou` or `!tojas`')
 		
 		//.addField('Inline field title', 'Some value here', true)
