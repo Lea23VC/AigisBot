@@ -21,7 +21,7 @@ var params = {
 
 client.on('ready', () => {
 	console.log(`Logged in as ${client.user.tag}!`);
-	client.user.setActivity('Chupalo Karol Dance', { type: 'PLAYING' });
+	client.user.setActivity('Chupalo Karol Dance | !halp for rom searching commands', { type: 'PLAYING' });
 });
 
 
