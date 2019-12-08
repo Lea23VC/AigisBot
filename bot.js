@@ -1,4 +1,4 @@
-//require('http').createServer().listen(3000);dd
+//require('http').createServer().listen(9222);
 
 const Discord = require('discord.js');
 const client = new Discord.Client();
@@ -10,11 +10,18 @@ const sagiri = require('sagiri');
 
 //require('http').createServer().listen(3000);
 
+var params = {
+	'offset': 0,
+	'limit': 10,
+	'sort': 'score',
+	'order': 'desc'
+  };
+
 
 
 client.on('ready', () => {
 	console.log(`Logged in as ${client.user.tag}!`);
-	client.user.setActivity('Chupalo Karol Dance', { type: 'WATCHING' });
+	client.user.setActivity('Chupalo Karol Dance', { type: 'PLAYING' });
 });
 
 
@@ -204,6 +211,12 @@ client.on('message', msg => {
 		getURL(msg, res, "1UP1eQSsWjLYm8PvyLLYlV8idZMiYSNAV");
 	}
 
+	if (msg.content.startsWith('!64')) {
+		var res = msg.content.slice(4);
+		getURL(msg, res, "1RXohCQUSlEGMMuWQCJNDXlRI_eUXp2SW");
+	}
+
+
 	if (msg.content.startsWith('!gamecube') || msg.content.startsWith('!gc')) {
 		var res;
 		if (msg.content.startsWith('!gamecube')) {
@@ -221,6 +234,8 @@ client.on('message', msg => {
 		var res = msg.content.slice(5);
 		getURL(msg, res, "1ZRCKSowl3XyXg7v-8hjAd4qPpS3mrEUY");
 	}
+
+
 
 	return;
   
@@ -325,13 +340,14 @@ async function salsa2(img, msg) {
 	console.log("WRYYYY");
 	const salsaa = await cliente(img , { results: 10 });
 	console.log(salsaa);
-	
+	i=0;
 	salsaa.forEach(urls => {
 		console.log(urls.url);
 		if (awa) {
 			msg.channel.send(urls.url);
 			//msg.channel.send(urls.thumbnail);
 			awa=false;
+			
 
 		}
 		
