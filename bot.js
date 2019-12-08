@@ -4,6 +4,10 @@ const Discord = require('discord.js');
 const client = new Discord.Client();
 const auth = require('./auth.json');
 
+
+const sagiri = require('sagiri');
+
+
 //require('http').createServer().listen(3000);
 
 
@@ -109,6 +113,14 @@ client.on('message', msg => {
 		.setColor('#275BF0')
 		msg.channel.send(embed)
 	}
+
+
+	if (msg.content === '!sauce') {
+
+		salsa(msg);
+
+	}
+
 
 	if (msg.content.startsWith('!avatar')) {
 		//console.log(msg.mentions.users);
@@ -277,6 +289,57 @@ function getURL(msg, names, folderId){
 }	
 
 
+async function salsa(msg) {
+	msg.channel.fetchMessages({ limit: 25 }).then(messages => {
+
+		found = new Boolean(); //iniciar boolean
+		console.log("AAAGRIA -1");
+
+		messages.forEach(mensaje => {
+			console.log("AAAGRIA -2");
+			if (mensaje.attachments && found) {
+				var lastme = mensaje.attachments.forEach(img => {
+					console.log("AAAAGRIA");
+					if (img.url.endsWith(".png") || img.url.endsWith(".jpg")) {
+						//msg.channel.send(img.url);
+						found = false;
+						console.log("AAAAGRIA3");
+						salsa2(img.url, msg);
+
+					}
+					
+				});
+			}
+
+
+		})
+
+	})
+}
+
+async function salsa2(img, msg) {
+	
+	var awa = Boolean(true);
+
+	const cliente = sagiri('3397773ef599feb5954db044e6e89e377434dd4b' ,  {results: 10 });
+	console.log("WRYYYY");
+	const salsaa = await cliente(img , { results: 10 });
+	console.log(salsaa);
+	
+	salsaa.forEach(urls => {
+		console.log(urls.url);
+		if (awa) {
+			msg.channel.send(urls.url);
+			//msg.channel.send(urls.thumbnail);
+			awa=false;
+
+		}
+		
+		
+	})
+
+		
+}
 
 client.login(auth.token);
 //client.login(process.env.token);
