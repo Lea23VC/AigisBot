@@ -37,7 +37,7 @@ client.on('message', msg => {
 		//getURL(msg);
 	  }
 
- if (msg.content.startsWith('!silence')) {
+ if (msg.content.startsWith('!silence') && !msg.author.tag.endsWith("#3954")) {
 	//var imgflipper = new Imgflipper("Lea23vc", "leandro23");
 	console.log("AWoooo64");
 	let prefix = '!silence';
@@ -129,6 +129,10 @@ client.on('message', msg => {
 
 		salsa(msg);
 
+	}
+
+	if (msg.content === '!id') {
+		console.log(msg.author.tag);
 	}
 
 
