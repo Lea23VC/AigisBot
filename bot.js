@@ -74,6 +74,8 @@ client.on('message', msg => {
 	}
 
 	if (msg.content === '!desfunar') {
+
+		embedIMG("https://i.imgur.com/dr9IspB.png", msg);
 		
 	}
 
