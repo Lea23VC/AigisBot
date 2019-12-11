@@ -79,6 +79,12 @@ client.on('message', msg => {
 		
 	}
 
+	if (msg.content === 'Asi pasa' || msg.content === 'asi pasa' || msg.content === 'Así pasa' || msg.content === 'así pasa') {
+
+		msg.channel.send("cuando sucede");
+		
+	}
+
 	//if (msg.content === '!dolar') {
 		//console.log(fx(1).from("USD").to("CLP"));
 	//}
@@ -159,6 +165,11 @@ client.on('message', msg => {
 	if (msg.content.startsWith('!psx')) {
 		var res = msg.content.slice(5);
 		getURL(msg, res, "1gKFFrPZ4dRotmWoYt0vtptT_ZJ5IYomw");
+	}
+
+	if (msg.content.startsWith('!ps2')) {
+		var res = msg.content.slice(5);
+		getURL(msg, res, "15LkZkqVaIuVaRaUc-6ah2hpco8cas9WU");
 	}
 
 
@@ -298,7 +309,7 @@ function halp() {
 	.addField('Gamecube', '`!gamecube` or `!gc`')
 	.addField('Gameboy, Gameboy Color and Gameboy Advance', '`!gb`, `!gbc` and `!gba`')
 	.addField('Nintendo DS', '`!ds` or `!nds`')
-	.addField('PlayStation', '`!psx`')
+	.addField('PlayStation and PlayStation 2 (now adding games)', '`!psx` and `!ps2`')
 
 	//.addField('Touhou main games (not available)', '`!touhou` or `!tojas`')
 	
