@@ -253,43 +253,49 @@ function getURL(msg, names, folderId){
 
 	
 	console.log('awooo5');
-	msg.reply("Searching " + names);
+	
 	//msg.reply('Awoooooo2');
 	//const search1 = names;
 	//search1 = names;
 	//msg.reply(names+ " " + 'funcion');
 
 	//var folderId = "11ENyQEKdqnQNYTQV-VAUXa3xFyZVY12n";
+
+	if (checkCommand(names, msg)) {
+
+		msg.reply("Searching " + names);
+
+		drive.files.list({ q: "name contains '" + names + "' and '" + folderId + "' in parents", fields: 'files(id, name, parents)', space: 'appDataFolder'}, (err, res) => {
 	
-	var awooo = "Mega";
-	drive.files.list({ q: "name contains '" + names + "' and '" + folderId + "' in parents", fields: 'files(id, name, parents)', space: 'appDataFolder'}, (err, res) => {
+
+
+			//name contains '" + names + "'   parents in '" + folderId + "'
+		if (err) throw err;
+			const files = res.data.files;
+			console.log(files + " awooooo");
+			if (files.length) {
 	
-
-
-		//name contains '" + names + "'   parents in '" + folderId + "'
-	if (err) throw err;
-		const files = res.data.files;
-		console.log(files + " awooooo");
-		if (files.length) {
-
-			
-
-			files.map((file) => {
-			console.log(file.name);
-			console.log(file.parents);
-			//console.log(folderIds);
-			//msg.reply('Awoooooo');
-
-			msg.author.send(file.name + " " +"https://drive.google.com/uc?export=download&id=" + file.id);
+				
+	
+				files.map((file) => {
+				console.log(file.name);
+				console.log(file.parents);
+				//console.log(folderIds);
+				//msg.reply('Awoooooo');
+	
+				msg.author.send(file.name + " " +"https://drive.google.com/uc?export=download&id=" + file.id);
+			});
+			msg.reply("The games have been sent, please check your PMs")
+			console.log("Busqueda terminada?");
+			//return files;
+	  } else {
+		console.log('No files found');
+		msg.reply("No files found");
+		  }
 		});
-		msg.reply("The games have been sent, please check your PMs")
-		console.log("Busqueda terminada?");
-		//return files;
-  } else {
-    console.log('No files found');
-	msg.reply("No files found");
-  	}
-	});
+
+	}
+	
 }	
 
 function halp() {
@@ -309,7 +315,7 @@ function halp() {
 	.addField('Gamecube', '`!gamecube` or `!gc`')
 	.addField('Gameboy, Gameboy Color and Gameboy Advance', '`!gb`, `!gbc` and `!gba`')
 	.addField('Nintendo DS', '`!ds` or `!nds`')
-	.addField('PlayStation, PlayStation 2 and PlayStation Portable (now adding games)', '`!psx`,`!ps2` and `!psp`')
+	.addField('PlayStation, PlayStation 2 and PlayStation Portable (now adding games)', '`!psx`, `!ps2` and `!psp`')
 
 	//.addField('Touhou main games (not available)', '`!touhou` or `!tojas`')
 	
@@ -391,5 +397,15 @@ async function embedIMG (url, msg) {
 
 	msg.channel.send(embed);
 
+
+}
+
+function checkCommand (name, msg) {
+
+	if (name==="") {
+		msg.channel.send("I think you forgot the name of the game, try again");
+		return false;
+	}
+	else return true;
 
 }
