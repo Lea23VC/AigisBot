@@ -172,6 +172,12 @@ client.on('message', msg => {
 		getURL(msg, res, "15LkZkqVaIuVaRaUc-6ah2hpco8cas9WU");
 	}
 
+	if (msg.content.startsWith('!psp')) {
+		var res = msg.content.slice(5);
+		getURL(msg, res, "1Mb_YCYz163lMpNUSz8D0AP8jzw9UWwhx");
+	}
+
+
 
 	return;
   
