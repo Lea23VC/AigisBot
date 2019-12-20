@@ -174,7 +174,7 @@ client.on('message', msg => {
 
 	if (msg.content.startsWith('!psp')) {
 		var res = msg.content.slice(5);
-		getURL(msg, res, "1Mb_YCYz163lMpNUSz8D0AP8jzw9UWwhx");
+		getURL(msg, res, "1xZHKYjRpEsQIGgzjDEo2Ygf0Pt0XfER7");
 	}
 
 
