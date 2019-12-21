@@ -118,15 +118,8 @@ client.on('message', msg => {
 		getURL(msg, res, "1Y5wfpQCGq73pkK8z44A4LryotFwjLyCt");
 	}
 
-	if (msg.content.startsWith('!ds') || msg.content.startsWith('!nds')) {
-		var res;
-		if (msg.content.startsWith('!ds')) {
-			res = msg.content.slice(4);
-		}
-		else {
-			res = msg.content.slice(5);
-		}
-
+	if (msg.content.startsWith('!ds')) {
+		var res = msg.content.slice(4);
 		getURL(msg, res, "1dVLNOSJk9_GC0PISzlZAKRT81c1iJqXg");
 	}
 
@@ -326,8 +319,8 @@ function halp() {
 	.addField('Nintendo 64', '`!64`')
 	.addField('Gamecube', '`!gamecube` or `!gc`')
 	.addField('Gameboy, Gameboy Color and Gameboy Advance', '`!gb`, `!gbc` and `!gba`')
-	.addField('Nintendo DS', '`!ds` or `!nds`')
-	.addField('Nintendo 3DS (now adding games, cia only)', '`!3ds`')
+	.addField('Nintendo DS', '`!ds`', true)
+	.addField('Nintendo 3DS (now adding games, cia only)', '`!3ds`', true)
 	.addField('PlayStation, PlayStation 2 and PlayStation Portable', '`!psx`, `!ps2` and `!psp`')
 
 	//.addField('Touhou main games (not available)', '`!touhou` or `!tojas`')
