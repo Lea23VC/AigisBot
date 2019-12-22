@@ -320,7 +320,7 @@ function halp() {
 	.addField('Gamecube', '`!gamecube` or `!gc`')
 	.addField('Gameboy, Gameboy Color and Gameboy Advance', '`!gb`, `!gbc` and `!gba`')
 	.addField('Nintendo DS', '`!ds`', true)
-	.addField('Nintendo 3DS (now adding games, cia only)', '`!3ds`', true)
+	.addField('Nintendo 3DS (cia only)', '`!3ds`', true)
 	.addField('PlayStation, PlayStation 2 and PlayStation Portable', '`!psx`, `!ps2` and `!psp`')
 
 	//.addField('Touhou main games (not available)', '`!touhou` or `!tojas`')
