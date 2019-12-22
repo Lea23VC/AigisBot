@@ -171,8 +171,19 @@ client.on('message', msg => {
 	}
 
 	if (msg.content.startsWith('!3ds')) {
-		var res = msg.content.slice(5);
-		getURL(msg, res, "15Pf3-ks3wkj9ZVd_a1p5jYYKpu6oOkh9");
+		var res;
+		if (msg.content.startsWith('!3ds vc')) {
+			res = msg.content.slice(8)
+			getURL(msg, res, "1rj3sclHbPR3HLly0dmXZTM3KLWPd-hxL");
+		}
+
+		else {
+			res = msg.content.slice(5);
+			getURL(msg, res, "15Pf3-ks3wkj9ZVd_a1p5jYYKpu6oOkh9");
+
+		}
+
+		
 	}
 
 
@@ -320,7 +331,7 @@ function halp() {
 	.addField('Gamecube', '`!gamecube` or `!gc`')
 	.addField('Gameboy, Gameboy Color and Gameboy Advance', '`!gb`, `!gbc` and `!gba`')
 	.addField('Nintendo DS', '`!ds`', true)
-	.addField('Nintendo 3DS (cia only)', '`!3ds`', true)
+	.addField('Nintendo 3DS (cia only)', '`!3ds`, `!3ds vc` for Virtual Console games')
 	.addField('PlayStation, PlayStation 2 and PlayStation Portable', '`!psx`, `!ps2` and `!psp`')
 
 	//.addField('Touhou main games (not available)', '`!touhou` or `!tojas`')
