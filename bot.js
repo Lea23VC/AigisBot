@@ -79,6 +79,12 @@ client.on('message', msg => {
 		
 	}
 
+	if (msg.content === '!ps2 shin megami tensei marselo' || msg.content === '!ps2 Shin Megami Tensei marselo' || msg.content === '!ps2 shin megami tensei Marselo' || msg.content === '!ps2 Shin Megami Tensei Marselo') {
+
+		embedIMG("https://i.imgur.com/W0PC2nA.png", msg);
+		
+	}
+
 	if (msg.content === 'Asi pasa' || msg.content === 'asi pasa' || msg.content === 'Así pasa' || msg.content === 'así pasa') {
 
 		msg.channel.send("cuando sucede");
