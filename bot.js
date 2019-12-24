@@ -179,7 +179,7 @@ client.on('message', msg => {
 
 		else {
 			res = msg.content.slice(5);
-			getURL(msg, res, "15Pf3-ks3wkj9ZVd_a1p5jYYKpu6oOkh9");
+			getURL(msg, res, "1TZckYdpmCAcwZQ35ui-9yzTrqNQUnBLn");
 
 		}
 
