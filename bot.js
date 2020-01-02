@@ -264,6 +264,16 @@ async function saucenao(img, msg) {
 
 
 function getURL(msg, names, folderId){
+
+
+	var nasos=0;
+
+
+	if (folderId==="1FTyDmwEhBF9IRV5PiymfbMfh0pIclzur") {
+
+		nasos=1;
+
+	}
 	
 	const { google } = require('googleapis');
 	const credentials = require('./credentials.json');
@@ -310,6 +320,11 @@ function getURL(msg, names, folderId){
 				console.log(file.parents);
 				//console.log(folderIds);
 				//msg.reply('Awoooooo');
+
+				if (nasos) {
+					msg.author.send("Download https://drive.google.com/file/d/1iU8WMD4hziVjtpGvhnfd2JfFlpeFhWv3/view?usp=sharing and extract the files into a folder. To extract a rom drag the rom onto the .exe, a command prompt should popup and extract the ISO from the .dec file.")
+					nasos=0;
+				}
 	
 				msg.author.send(file.name + " " +"https://drive.google.com/uc?export=download&id=" + file.id);
 			});
