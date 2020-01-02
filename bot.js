@@ -312,10 +312,7 @@ function getURL(msg, names, folderId){
 			const files = res.data.files;
 			console.log(files + " awooooo");
 			if (files.length) {
-				if (nasos===1) {
-					msg.author.send("Download https://drive.google.com/file/d/1iU8WMD4hziVjtpGvhnfd2JfFlpeFhWv3/view?usp=sharing and extract the files into a folder. To extract a rom drag the rom onto the .exe, a command prompt should popup and extract the ISO from the .dec file.")
-					nasos=0;
-				}
+				
 				
 	
 				files.map((file) => {
@@ -329,6 +326,11 @@ function getURL(msg, names, folderId){
 			});
 			msg.reply("The games have been sent, please check your PMs")
 			console.log("Busqueda terminada?");
+
+			if (nasos===1) {
+				msg.author.send("Download https://drive.google.com/file/d/1iU8WMD4hziVjtpGvhnfd2JfFlpeFhWv3/view?usp=sharing and extract the files into a folder. To extract a rom drag the rom onto the .exe, a command prompt should popup and extract the ISO from the .dec file.")
+				nasos=0;
+			}
 			//return files;
 	  } else {
 		console.log('No files found');
