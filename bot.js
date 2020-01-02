@@ -194,7 +194,7 @@ client.on('message', msg => {
 
 	if (msg.content.startsWith('!wii')) {
 		var res = msg.content.slice(5);
-		msg.channel.send("Download https://archive.org/download/nNASOS1.8/nNASOS1.8.zip and extract the files into a folder. To extract a rom drag the rom onto the .exe, a command prompt should popup and extract the ISO from the .dec file.")
+		msg.channel.send("Download https://drive.google.com/file/d/1iU8WMD4hziVjtpGvhnfd2JfFlpeFhWv3/view?usp=sharing and extract the files into a folder. To extract a rom drag the rom onto the .exe, a command prompt should popup and extract the ISO from the .dec file.")
 		getURL(msg, res, "1FTyDmwEhBF9IRV5PiymfbMfh0pIclzur");
 	}
 
