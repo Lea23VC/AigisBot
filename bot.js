@@ -161,7 +161,7 @@ client.on('message', msg => {
 		getURL(msg, res, "1FoQOif8muuqBpKG79ftBY8QcpWZ12ELM");
 	}
 
-	if (msg.content.startsWith('!psx')) {
+	if (msg.content.startsWith('!psx') || msg.content.startsWith('!ps1')) {
 		var res = msg.content.slice(5);
 		getURL(msg, res, "1gKFFrPZ4dRotmWoYt0vtptT_ZJ5IYomw");
 	}
@@ -190,6 +190,12 @@ client.on('message', msg => {
 		}
 
 		
+	}
+
+	if (msg.content.startsWith('!wii')) {
+		var res = msg.content.slice(5);
+		msg.channel.send("Download https://archive.org/download/nNASOS1.8/nNASOS1.8.zip and extract the files into a folder. To extract a rom drag the rom onto the .exe, a command prompt should popup and extract the ISO from the .dec file.")
+		getURL(msg, res, "1FTyDmwEhBF9IRV5PiymfbMfh0pIclzur");
 	}
 
 
