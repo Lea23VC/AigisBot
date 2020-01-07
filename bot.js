@@ -200,7 +200,7 @@ client.on('message', msg => {
 
 
 	if (msg.content.startsWith('!switch')) {
-		var res = msg.content.slice(5);
+		var res = msg.content.slice(8);
 		getURL(msg, res, "15AP4RRsZ8TujFbeE4riHpuo6w8K4oT7I");
 	}
 
