@@ -200,6 +200,8 @@ client.on('message', msg => {
 
 
 	if (msg.content.startsWith('!switch')) {
+		msg.reply('Important: Does not contain important first party titles like Super Mario Oddyssey, Super Smash Bros. Ultimate, etc');
+
 		var res = msg.content.slice(8);
 		getURL(msg, res, "15AP4RRsZ8TujFbeE4riHpuo6w8K4oT7I");
 	}
@@ -364,7 +366,7 @@ function halp() {
 	.addField('Gamecube', '`!gamecube` or `!gc`', true)
 	.addField('Nintendo Wii (NASOS isos)', '`!wii`', true)
 	.addField('Nintendo Switch', '`!switch`')
-	.setDescription('Note: It doesnt include important AAA titles... for now')
+	//.setDescription('Note: It doesnt include important AAA titles... for now')
 	.addField('Gameboy, Gameboy Color and Gameboy Advance', '`!gb`, `!gbc` and `!gba`')
 	.addField('Nintendo DS', '`!ds`', true)
 	.addField('Nintendo 3DS (cia only)', '`!3ds`, `!3ds vc` for Virtual Console games')
