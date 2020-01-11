@@ -364,6 +364,7 @@ function halp() {
 	.addField('Gamecube', '`!gamecube` or `!gc`', true)
 	.addField('Nintendo Wii (NASOS isos)', '`!wii`', true)
 	.addField('Nintendo Switch', '`!switch`')
+	.setDescription('Note: It doesnt include important AAA titles... for now')
 	.addField('Gameboy, Gameboy Color and Gameboy Advance', '`!gb`, `!gbc` and `!gba`')
 	.addField('Nintendo DS', '`!ds`', true)
 	.addField('Nintendo 3DS (cia only)', '`!3ds`, `!3ds vc` for Virtual Console games')
