@@ -200,7 +200,7 @@ client.on('message', msg => {
 
 
 	if (msg.content.startsWith('!switch')) {
-		msg.reply('Important: Does not contain important first party titles like Super Mario Oddyssey, Super Smash Bros. Ultimate, etc');
+		msg.channel.send('Important: Does not contain important first party titles like Super Mario Oddyssey, Super Smash Bros. Ultimate, etc');
 
 		var res = msg.content.slice(8);
 		getURL(msg, res, "15AP4RRsZ8TujFbeE4riHpuo6w8K4oT7I");
