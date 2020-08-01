@@ -13,7 +13,7 @@ const sagiri = require('sagiri');
 
 client.on('ready', () => {
 	console.log(`Logged in as ${client.user.tag}!`);
-	client.user.setActivity('Chupalo Karol Dance | !halp for rom searching commands', { type: 'PLAYING' });
+	client.user.setActivity('!halp for rom searching commands', { type: 'PLAYING' });
 });
 
 
@@ -28,13 +28,6 @@ client.on('message', msg => {
 		
 		//getURL(msg);
 	  }
-
- if (msg.content.startsWith('!silence') && !msg.author.tag.endsWith("#3954")) {
-	//var imgflipper = new Imgflipper("Lea23vc", "leandro23");
-	
-	sendmeme(msg);
-	
-  }
 
 
 	if (msg.content === '!halp') {
