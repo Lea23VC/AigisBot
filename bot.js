@@ -185,6 +185,17 @@ client.on('message', msg => {
 		
 	}
 
+	if (msg.content.startsWith('!dreamcast') || msg.content.startsWith('!dc')) {
+		var res;
+		if (msg.content.startsWith('!dreamcast')){
+			res = msg.content.slice(11);
+		}
+		else {
+			res = msg.content.slice(4);
+		}
+		getURL(msg, res, '1co48U58-ypWVKLzn8iiPbOXz9P_AygcC');
+	}
+
 	if (msg.content.startsWith('!wii')) {
 		var res = msg.content.slice(5);
 		msg.author.send("Download https://drive.google.com/file/d/1iU8WMD4hziVjtpGvhnfd2JfFlpeFhWv3/view?usp=sharing and extract the files into a folder. To extract a rom drag the rom onto the .exe, a command prompt should popup and extract the ISO from the .dec file.")
@@ -364,7 +375,7 @@ function halp() {
 	.addField('Nintendo DS', '`!ds`', true)
 	.addField('Nintendo 3DS (cia only)', '`!3ds`, `!3ds vc` for Virtual Console games')
 	.addField('PlayStation, PlayStation 2 and PlayStation Portable', '`!psx`, `!ps2` and `!psp`')
-
+	.addField('Dreamcast', '`!dreamcast` or `!dc`', true)
 	//.addField('Touhou main games (not available)', '`!touhou` or `!tojas`')
 	
 	//.addField('Inline field title', 'Some value here', true)
