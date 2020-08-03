@@ -30,6 +30,14 @@ client.on('message', msg => {
 	  }
 
 
+	if (msg.content.startsWith('!silence') && !msg.author.tag.endsWith("#3954")) {	
+		//var imgflipper = new Imgflipper("Lea23vc", "leandro23");	
+	
+		sendmeme(msg);	
+	
+	}
+
+
 	if (msg.content === '!halp') {
 
 		msg.channel.send(halp());
