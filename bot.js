@@ -218,6 +218,17 @@ client.on('message', msg => {
 		getURL(msg, res, "15AP4RRsZ8TujFbeE4riHpuo6w8K4oT7I");
 	}
 
+	if (msg.content.startsWith('!genesis') || msg.content.startsWith('!megadrive')) {
+		var res;
+		if (msg.content.startsWith('!genesis')) {
+			res = msg.content.slice(9);
+		}
+		else {
+			res = msg.content.slice(11);
+		}
+		getURL(msg, res, "1DrFVEzUpWNO94Evizws6en1wHJzbyiiQ");
+	}
+
 
 
 	return;
@@ -383,6 +394,7 @@ function halp() {
 	.addField('Nintendo DS', '`!ds`', true)
 	.addField('Nintendo 3DS (cia only)', '`!3ds`, `!3ds vc` for Virtual Console games')
 	.addField('PlayStation, PlayStation 2 and PlayStation Portable', '`!psx`, `!ps2` and `!psp`')
+	.addField('Sega Genesis/MegaDrive', '`!genesis` or `!megadrive`')
 	.addField('Dreamcast', '`!dreamcast` or `!dc`', true)
 	//.addField('Touhou main games (not available)', '`!touhou` or `!tojas`')
 	
