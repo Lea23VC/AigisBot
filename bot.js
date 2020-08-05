@@ -150,6 +150,8 @@ client.on('message', msg => {
 
 
 	if (msg.content.startsWith('!gamecube') || msg.content.startsWith('!gc')) {
+
+		msg.channel.send("Note: these files works on Dolphin emulator (use the latest development version) but not on real hardware. If you're using real hardware, use https://vimm.net/vault/?p=nkit to convert to ISO.")
 		var res;
 		if (msg.content.startsWith('!gamecube')) {
 			res = msg.content.slice(10);
