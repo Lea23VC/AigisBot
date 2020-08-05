@@ -159,7 +159,7 @@ client.on('message', msg => {
 		}
 
 		//var res = msg.content.slice(4);
-		getURL(msg, res, "1FoQOif8muuqBpKG79ftBY8QcpWZ12ELM");
+		getURL(msg, res, "1Dphhgdzv6OQlNuvoynGdl2Mmm_FrPdQ-");
 	}
 
 	if (msg.content.startsWith('!psx') || msg.content.startsWith('!ps1')) {
@@ -206,8 +206,8 @@ client.on('message', msg => {
 
 	if (msg.content.startsWith('!wii')) {
 		var res = msg.content.slice(5);
-		msg.author.send("Download https://drive.google.com/file/d/1iU8WMD4hziVjtpGvhnfd2JfFlpeFhWv3/view?usp=sharing and extract the files into a folder. To extract a rom drag the rom onto the .exe, a command prompt should popup and extract the ISO from the .dec file.")
-		getURL(msg, res, "1FTyDmwEhBF9IRV5PiymfbMfh0pIclzur");
+		msg.channel.send("Note: these files works on Dolphin emulator (use the latest development version) but not on real hardware. If you're using real hardware, use https://vimm.net/vault/?p=nkit to convert to ISO.")
+		getURL(msg, res, "1SDY8linNWF9QHsu1nD6VWtO3N6DFhKFt");
 	}
 
 
@@ -383,16 +383,19 @@ function halp() {
 	.setDescription('piracy=bad, unless you are poor')
 	.setThumbnail('https://i.imgur.com/dbyNfIs.png')
 	//.addBlankField()
+	
 	.addField('Nintendo Entertainment System', '`!nes` or `!famicom`')
 	.addField('Super Nintendo', '`!snes` or `!sfc`')
 	.addField('Nintendo 64', '`!64`')
-	.addField('Gamecube', '`!gamecube` or `!gc`', true)
-	.addField('Nintendo Wii (NASOS isos)', '`!wii`', true)
-	.addField('Nintendo Switch', '`!switch`')
-	//.setDescription('Note: It doesnt include important AAA titles... for now')
+	.addField('Gamecube (NKit GCZ)', '`!gamecube` or `!gc`. `!gc iso` for ISOs (USA only)')
+	.addField('Nintendo Wii (NKit GCZ)', '`!wii`', true)
 	.addField('Gameboy, Gameboy Color and Gameboy Advance', '`!gb`, `!gbc` and `!gba`')
 	.addField('Nintendo DS', '`!ds`', true)
 	.addField('Nintendo 3DS (cia only)', '`!3ds`, `!3ds vc` for Virtual Console games')
+	.addField('Nintendo Switch', '`!switch`')
+
+	//.setDescription('Note: It doesnt include important AAA titles... for now')
+
 	.addField('PlayStation, PlayStation 2 and PlayStation Portable', '`!psx`, `!ps2` and `!psp`')
 	.addField('Sega Genesis/MegaDrive', '`!genesis` or `!megadrive`')
 	.addField('Dreamcast', '`!dreamcast` or `!dc`', true)
