@@ -125,8 +125,16 @@ client.on('message', msg => {
 		getURL(msg, res, "1Y5wfpQCGq73pkK8z44A4LryotFwjLyCt");
 	}
 
-	if (msg.content.startsWith('!ds')) {
-		var res = msg.content.slice(4);
+	if (msg.content.startsWith('!ds') || msg.content.startsWith('!nds') ) {
+
+		if (msg.content.startsWith('!ds')) {
+			var res = msg.content.slice(4);
+		}
+
+		else {
+			var res = msg.content.slice(5);
+		}
+		
 		getURL(msg, res, "1dVLNOSJk9_GC0PISzlZAKRT81c1iJqXg");
 	}
 
