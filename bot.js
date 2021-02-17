@@ -201,7 +201,7 @@ client.on('message', msg => {
 		}
 
 		
-	}                 
+	}                        
 
 	if (msg.content.startsWith('!dreamcast') || msg.content.startsWith('!dc')) {
 		var res;
