@@ -2,7 +2,9 @@
 
 const Discord = require('discord.js');
 const client = new Discord.Client();
-const auth = require('./auth.json');
+require('dotenv').config();
+const auth = process.env.DISCORD_AUTH;
+const caca = require('./credentials.json');
 
 
 const sagiri = require('sagiri');
@@ -22,230 +24,210 @@ client.on('ready', () => {
 
 client.on('message', msg => {
 
-	if (msg.content === 'Aigis, mata a Piñera') {
-		msg.reply('El Presidente Sebastian Piñera ha sido eliminado.');
-		console.log('awa');
+	
+
+	switch(true) {
+
+		case msg.content==='Aigis, mata a Piñera':
+			msg.reply('El Presidente Sebastian Piñera ha sido eliminado.');
+			console.log('awa');
+			break
+
+		case (msg.content.startsWith('!silence')):
+			sendmeme(msg);
+			break
+
+		case (msg.content === '!halp'):
+			msg.channel.send(halp());
+			break
 		
-		//getURL(msg);
-	  }
+		case (msg.content === '!myavatar'):
+			embedIMG(msg.author.avatarURL, msg);
+			break
 
+		case (msg.content === '!sauce'):
+			msg.channel.send(salsa(msg));
+			break
 
-	if (msg.content.startsWith('!silence') && !msg.author.tag.endsWith("#3954")) {	
-		//var imgflipper = new Imgflipper("Lea23vc", "leandro23");	
+		case (msg.content.startsWith('!avatar')):
+			const avatarList = msg.mentions.users.map(user => { //convierte el mapa de usuarios en una lista, lo cual recorre con la variable "user"
+				embedIMG(user.avatarURL, msg);
+			});
+			break
+
+		case (msg.content === '!desfunar'):
+			embedIMG("https://i.imgur.com/dr9IspB.png", msg);
+			break
+
+		case (msg.content === '!ps2 shin megami tensei marselo' || msg.content === '!ps2 Shin Megami Tensei marselo' || msg.content === '!ps2 shin megami tensei Marselo' || msg.content === '!ps2 Shin Megami Tensei Marselo'):
+			embedIMG("https://i.imgur.com/W0PC2nA.png", msg);
+			break
+		
+		case (msg.content === 'Asi pasa' || msg.content === 'asi pasa' || msg.content === 'Así pasa' || msg.content === 'así pasa'):
+			msg.channel.send("cuando sucede");
+			break
+
+		case (msg.content.startsWith('!gbc')):
+			var res = msg.content.slice(5);
+			getURL(msg, res, "1aPdNOt1kqXJvND2rWOOxe4l4l5iL8nJO");
+			break
+
+		case (msg.content.startsWith('!gba')):
+			var res = msg.content.slice(5);
+			getURL(msg, res, "11ENyQEKdqnQNYTQV-VAUXa3xFyZVY12n");
+			break
+
+		case (msg.content.startsWith('!snes') || msg.content.startsWith('!sfc') ):
+			var res;
+			if (msg.content.startsWith('!snes')) {
+				res = msg.content.slice(6);
+			}
+			else {
+				res = msg.content.slice(5);
+			}
+			getURL(msg, res, "1bhZ-dmKGEiWuo4UVH-PFhqf6lvq-uAcj");
+			break
+
+		case (msg.content.startsWith('!gb') && msg.content[3]===" "):
+			var res = msg.content.slice(4);
+			getURL(msg, res, "1Y5wfpQCGq73pkK8z44A4LryotFwjLyCt");
+			break
+
+		case (msg.content.startsWith('!ds') || msg.content.startsWith('!nds') ):
+			if (msg.content.startsWith('!ds')) {
+				var res = msg.content.slice(4);
+			}
 	
-		sendmeme(msg);	
-	
+			else {
+				var res = msg.content.slice(5);
+			}
+			
+			getURL(msg, res, "1dVLNOSJk9_GC0PISzlZAKRT81c1iJqXg");
+			break
+
+		case (msg.content.startsWith('!nes') || msg.content.startsWith('!famicom')):
+			var res;
+			if (msg.content.startsWith('!nes')) {
+				res = msg.content.slice(5);
+			}
+			else {
+				res = msg.content.slice(9);
+			}
+
+			//var res = msg.content.slice(5);
+			getURL(msg, res, "1UP1eQSsWjLYm8PvyLLYlV8idZMiYSNAV");
+			break
+
+		case (msg.content.startsWith('!64')):
+			var res = msg.content.slice(4);
+			getURL(msg, res, "1RXohCQUSlEGMMuWQCJNDXlRI_eUXp2SW");
+			break
+
+		case (msg.content.startsWith('!gamecube') || msg.content.startsWith('!gc')):
+			msg.channel.send("Note: these files works on Dolphin emulator (the latest development version) but not on real hardware. If you're using real hardware, use https://vimm.net/vault/?p=nkit to convert to ISO.")
+			var res;
+			if (msg.content.startsWith('!gamecube')) {
+			res = msg.content.slice(10);
+			}
+			else {
+			res = msg.content.slice(4);
+			}
+
+			//var res = msg.content.slice(4);
+			getURL(msg, res, "1Dphhgdzv6OQlNuvoynGdl2Mmm_FrPdQ-");
+			break
+
+		case (msg.content.startsWith('!psx') || msg.content.startsWith('!ps1')):
+			var res = msg.content.slice(5);
+			getURL(msg, res, "1gKFFrPZ4dRotmWoYt0vtptT_ZJ5IYomw");
+			break
+
+		case (msg.content.startsWith('!ps2')):
+			var res = msg.content.slice(5);
+			getURL(msg, res, "15LkZkqVaIuVaRaUc-6ah2hpco8cas9WU");
+			break
+
+		case (msg.content.startsWith('!psp')):
+			var res = msg.content.slice(5);
+			getURL(msg, res, "1xZHKYjRpEsQIGgzjDEo2Ygf0Pt0XfER7");
+			break
+
+		case (msg.content.startsWith('!3ds')):
+			var res;
+			if (msg.content.startsWith('!3ds vc')) {
+				res = msg.content.slice(8)
+			}
+			else {
+				res = msg.content.slice(5);
+			}
+			getURL(msg, res, "1TZckYdpmCAcwZQ35ui-9yzTrqNQUnBLn");
+			break
+
+		case (msg.content.startsWith('!dreamcast') || msg.content.startsWith('!dc')):
+			var res;
+			if (msg.content.startsWith('!dreamcast')){
+			res = msg.content.slice(11);
+			}
+			else {
+			res = msg.content.slice(4);
+			}
+			getURL(msg, res, '1co48U58-ypWVKLzn8iiPbOXz9P_AygcC');
+			break
+
+		case (msg.content.startsWith('!wii')):
+			var res = msg.content.slice(5);
+			msg.channel.send("Note: these files works on Dolphin emulator (the latest development version) but not on real hardware. If you're using real hardware, use https://vimm.net/vault/?p=nkit to convert to ISO.")
+			getURL(msg, res, "1SDY8linNWF9QHsu1nD6VWtO3N6DFhKFt");
+			break
+
+		case (msg.content.startsWith('!switch')):
+			msg.channel.send('Important: Does not contain important first party titles like Super Mario Oddyssey, Super Smash Bros. Ultimate, etc');
+			var res = msg.content.slice(8);
+			getURL(msg, res, "15AP4RRsZ8TujFbeE4riHpuo6w8K4oT7I");
+			break
+		
+		case (msg.content.startsWith('!genesis') || msg.content.startsWith('!megadrive')):
+			var res;
+			if (msg.content.startsWith('!genesis')) {
+				res = msg.content.slice(9);
+			}
+			else {
+				res = msg.content.slice(11);
+			}
+			getURL(msg, res, "1DrFVEzUpWNO94Evizws6en1wHJzbyiiQ");
+			break
 	}
 
 
-	if (msg.content === '!halp') {
-
-		msg.channel.send(halp());
-  }
-
-	  
-	if (msg.content === '!myavatar') {
-
-		embedIMG(msg.author.avatarURL, msg);
-	}
-
-
-	if (msg.content === '!sauce') {
-
-		msg.channel.send(salsa(msg));
-
-	}
 
 	//if (msg.content === '!id') {
 		//console.log(msg.author.tag);
 	//}
 
 
-	if (msg.content.startsWith('!avatar')) {
-		//console.log(msg.mentions.users);
-		// Remove the "var" line; it isn't necessary.
+	// if (msg.content.startsWith('!avatar')) {
+	// 	//console.log(msg.mentions.users);
+	// 	// Remove the "var" line; it isn't necessary.
 		
-		// Replace "message.member" with "message.author"
-		const avatarList = msg.mentions.users.map(user => { //convierte el mapa de usuarios en una lista, lo cual recorre con la variable "user"
-			embedIMG(user.avatarURL, msg);
-		});
-		//msg.channel.send(avatarList);
+	// 	// Replace "message.member" with "message.author"
+	// 	const avatarList = msg.mentions.users.map(user => { //convierte el mapa de usuarios en una lista, lo cual recorre con la variable "user"
+	// 		embedIMG(user.avatarURL, msg);
+	// 	});
+	// 	//msg.channel.send(avatarList);
 		
-		//msg.channel.send(embed)
-	}
+	// 	//msg.channel.send(embed)
+	// }
 
-	if (msg.content === '!desfunar') {
 
-		embedIMG("https://i.imgur.com/dr9IspB.png", msg);
-		
-	}
-
-	if (msg.content === '!ps2 shin megami tensei marselo' || msg.content === '!ps2 Shin Megami Tensei marselo' || msg.content === '!ps2 shin megami tensei Marselo' || msg.content === '!ps2 Shin Megami Tensei Marselo') {
-
-		embedIMG("https://i.imgur.com/W0PC2nA.png", msg);
-		
-	}
-
-	if (msg.content === 'Asi pasa' || msg.content === 'asi pasa' || msg.content === 'Así pasa' || msg.content === 'así pasa') {
-
-		msg.channel.send("cuando sucede");
-		
-	}
 
 	//if (msg.content === '!dolar') {
 		//console.log(fx(1).from("USD").to("CLP"));
 	//}
 
-
-	
-	if (msg.content.startsWith('!gbc')) {
-		var res = msg.content.slice(5);
-		getURL(msg, res, "1aPdNOt1kqXJvND2rWOOxe4l4l5iL8nJO");
-	}
-
-
-	if (msg.content.startsWith('!gba')) {
-		var res = msg.content.slice(5);
-		getURL(msg, res, "11ENyQEKdqnQNYTQV-VAUXa3xFyZVY12n");
-	}
-
-	if (msg.content.startsWith('!snes') || msg.content.startsWith('!sfc') ) {
-		var res;
-		if (msg.content.startsWith('!snes')) {
-			res = msg.content.slice(6);
-		}
-		else {
-			res = msg.content.slice(5);
-		}
-		getURL(msg, res, "1bhZ-dmKGEiWuo4UVH-PFhqf6lvq-uAcj");
-	}
-
-	if (msg.content.startsWith('!gb') && msg.content[3]===" ") {  //Remover hasta encontrar una manera de que !gb no busque cuando se llama a !gba
-		var res = msg.content.slice(4);
-		getURL(msg, res, "1Y5wfpQCGq73pkK8z44A4LryotFwjLyCt");
-	}
-
-	if (msg.content.startsWith('!ds') || msg.content.startsWith('!nds') ) {
-
-		if (msg.content.startsWith('!ds')) {
-			var res = msg.content.slice(4);
-		}
-
-		else {
-			var res = msg.content.slice(5);
-		}
-		
-		getURL(msg, res, "1dVLNOSJk9_GC0PISzlZAKRT81c1iJqXg");
-	}
-
-	if (msg.content.startsWith('!nes') || msg.content.startsWith('!famicom')) {
-		var res;
-		if (msg.content.startsWith('!nes')) {
-			res = msg.content.slice(5);
-		}
-		else {
-			res = msg.content.slice(9);
-		}
-
-		//var res = msg.content.slice(5);
-		getURL(msg, res, "1UP1eQSsWjLYm8PvyLLYlV8idZMiYSNAV");
-	}
-
-	if (msg.content.startsWith('!64')) {
-		var res = msg.content.slice(4);
-		getURL(msg, res, "1RXohCQUSlEGMMuWQCJNDXlRI_eUXp2SW");
-	}
-
-
-	if (msg.content.startsWith('!gamecube') || msg.content.startsWith('!gc')) {
-
-		msg.channel.send("Note: these files works on Dolphin emulator (the latest development version) but not on real hardware. If you're using real hardware, use https://vimm.net/vault/?p=nkit to convert to ISO.")
-		var res;
-		if (msg.content.startsWith('!gamecube')) {
-			res = msg.content.slice(10);
-		}
-		else {
-			res = msg.content.slice(4);
-		}
-
-		//var res = msg.content.slice(4);
-		getURL(msg, res, "1Dphhgdzv6OQlNuvoynGdl2Mmm_FrPdQ-");
-	}
-
-	if (msg.content.startsWith('!psx') || msg.content.startsWith('!ps1')) {
-		var res = msg.content.slice(5);
-		getURL(msg, res, "1gKFFrPZ4dRotmWoYt0vtptT_ZJ5IYomw");
-	}
-
-	if (msg.content.startsWith('!ps2')) {
-		var res = msg.content.slice(5);
-		getURL(msg, res, "15LkZkqVaIuVaRaUc-6ah2hpco8cas9WU");
-	}
-
-	if (msg.content.startsWith('!psp')) {
-		var res = msg.content.slice(5);
-		getURL(msg, res, "1xZHKYjRpEsQIGgzjDEo2Ygf0Pt0XfER7");
-	}
-
-	if (msg.content.startsWith('!3ds')) {
-		var res;
-		if (msg.content.startsWith('!3ds vc')) {
-			res = msg.content.slice(8)
-			getURL(msg, res, "1rj3sclHbPR3HLly0dmXZTM3KLWPd-hxL");
-		}
-
-		else {
-			res = msg.content.slice(5);
-			getURL(msg, res, "1TZckYdpmCAcwZQ35ui-9yzTrqNQUnBLn");
-
-		}
-
-		
-	}                        
-
-	if (msg.content.startsWith('!dreamcast') || msg.content.startsWith('!dc')) {
-		var res;
-		if (msg.content.startsWith('!dreamcast')){
-			res = msg.content.slice(11);
-		}
-		else {
-			res = msg.content.slice(4);
-		}
-		getURL(msg, res, '1co48U58-ypWVKLzn8iiPbOXz9P_AygcC');
-	}
-
-	if (msg.content.startsWith('!wii')) {
-		var res = msg.content.slice(5);
-		msg.channel.send("Note: these files works on Dolphin emulator (the latest development version) but not on real hardware. If you're using real hardware, use https://vimm.net/vault/?p=nkit to convert to ISO.")
-		getURL(msg, res, "1SDY8linNWF9QHsu1nD6VWtO3N6DFhKFt");
-	}
-
-
-	if (msg.content.startsWith('!switch')) {
-		msg.channel.send('Important: Does not contain important first party titles like Super Mario Oddyssey, Super Smash Bros. Ultimate, etc');
-
-		var res = msg.content.slice(8);
-		getURL(msg, res, "15AP4RRsZ8TujFbeE4riHpuo6w8K4oT7I");
-	}
-
-	if (msg.content.startsWith('!genesis') || msg.content.startsWith('!megadrive')) {
-		var res;
-		if (msg.content.startsWith('!genesis')) {
-			res = msg.content.slice(9);
-		}
-		else {
-			res = msg.content.slice(11);
-		}
-		getURL(msg, res, "1DrFVEzUpWNO94Evizws6en1wHJzbyiiQ");
-	}
-
-
-
-	return;
   
 });
 
-client.login(auth.token);
+client.login(auth);
 //client.login(process.env.token);
 
 
@@ -316,7 +298,7 @@ function getURL(msg, names, folderId){
 	}
 	
 	const { google } = require('googleapis');
-	const credentials = require('./credentials.json');
+	const credentials = JSON.parse(process.env.GOOGLE_AUTH)
 	const scopes = [
 		'https://www.googleapis.com/auth/drive'
 	];
