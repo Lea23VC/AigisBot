@@ -4,8 +4,6 @@ const Discord = require('discord.js');
 const client = new Discord.Client();
 require('dotenv').config();
 const auth = process.env.DISCORD_AUTH;
-const caca = require('./credentials.json');
-
 
 const sagiri = require('sagiri');
 
