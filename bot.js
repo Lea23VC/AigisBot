@@ -27,8 +27,8 @@ client.on("message", (msg) => {
       sendmeme(msg);
       break;
 
-    case msg.content.startsWith("!womenRepelent"):
-      sendmemeRepelent(msg);
+    case msg.content.startsWith("!womenRepellent"):
+      sendmemeRepellent(msg);
       break;
 
     case msg.content === "!halp":
@@ -429,7 +429,7 @@ async function meme(abajo, arriba, msg) {
   });
 }
 
-async function memeRepelent(abajo, msg) {
+async function memeRepellent(abajo, msg) {
   var Imgflipper = require("imgflipper");
   var imgflipper = new Imgflipper("Lea23vc", "leandro23");
   console.log("probando meme " + abajo);
@@ -458,8 +458,8 @@ async function sendmeme(msg) {
   meme(op[0], op[1], msg);
 }
 
-async function sendmemeRepelent(msg) {
-  let prefix = "!womenRepelent";
+async function sendmemeRepellent(msg) {
+  let prefix = "!womenRepellent";
   const args = msg.content.slice(prefix.length);
   console.log(typeof args);
 
@@ -468,7 +468,7 @@ async function sendmemeRepelent(msg) {
   //url = await getURLmeme(op[0], op[1]);
   //console.log("Probando url: " + url);
 
-  memeRepelent(args, msg);
+  memeRepellent(args, msg);
 }
 
 async function embedIMG(url, msg) {
