@@ -1,6 +1,6 @@
 # AigisBot
 
-Discord bot that search for games roms using folder IDs from Google Drive.
+Discord bot that search for game roms using folder IDs from Google Drive.
 
 ![Slash commands](https://i.imgur.com/gX8cPCd.png "Slash commands")
 
