@@ -1,6 +1,5 @@
-node_modules
-now-discordjs
-.env.local
+#node modules
+node_modules/
+
+#enviroment variables
 .env
-credentials.json
-auth.json
