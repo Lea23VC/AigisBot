@@ -12,7 +12,7 @@ export const gamesConfig = [
   {
     name: "gba",
     fullname: "Game Boy Advance",
-    id: process.env.ID_FOLDER_GBC as string,
+    id: process.env.ID_FOLDER_GBA as string,
   },
   {
     name: "nes",
