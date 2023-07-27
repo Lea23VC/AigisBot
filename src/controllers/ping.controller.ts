@@ -2,40 +2,27 @@ import { Request, Response } from 'express';
 import nacl from 'tweetnacl';
 import * as dotenv from 'dotenv'; // see
 dotenv.config();
-import { getRomSearchingSlashCommand as getCommand } from '../commands/roms/romSearching';
 import { gamesConfig } from '../config/games';
-import { Client } from 'discord.js';
-import { client } from 'src/Bot';
+
 import { getRomUrl } from 'src/utils/getRomUrl';
 
 const publicKey = process.env.DISCORD_PUBLIC_KEY; // add your token here
 
 async function ping(req: Request, res: Response) {
   // Your public key can be found on your application in the Developer Portal
-  console.log('req: ', req);
   const PUBLIC_KEY = publicKey as string;
   const headers = req.headers;
   const signature = headers['x-signature-ed25519'];
   const timestamp = headers['x-signature-timestamp'];
   const body = req.body; // rawBody is expected to be a string, not raw bytes
 
-  console.log('signature: ', signature);
-
   const isVerified = nacl.sign.detached.verify(
     Buffer.from(timestamp + JSON.stringify(body)),
     Buffer.from(signature as any, 'hex'),
     Buffer.from(PUBLIC_KEY, 'hex'),
   );
-  console.log('pinging...');
-
-  console.log('body: ', body);
-
-  console.log('isVerified: ', isVerified);
-
-  console.log('data: ', body.data);
 
   if (body.type == 1 && isVerified) {
-    console.log('it was one');
     return res.status(200).send({
       type: 1,
     });
@@ -52,19 +39,24 @@ async function ping(req: Request, res: Response) {
         );
         return res.status(200).send({
           type: 4,
-          content: 'Here are the roms you requested:  ' + roms.join('\n'),
-          ephemeral: true,
+          data: {
+            content:
+              'Here are the roms you requested:  ' +
+              '\n\n' +
+              roms.slice(0, 10).join('\n\n'),
+          },
         });
       } catch (e) {
         return res.status(200).send({
           type: 4,
-          content: 'Some error happened. ' + (e as Error).message,
+          data: {
+            content: 'Some error happened. ' + (e as Error).message,
+          },
         });
       }
     } else {
       return res.status(200).send({
         type: 2,
-        ephemeral: true,
         content: 'No roms found.',
       });
     }

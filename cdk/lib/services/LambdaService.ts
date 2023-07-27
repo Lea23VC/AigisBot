@@ -36,6 +36,30 @@ export class LambdaService extends BaseService {
   // Lambda - Py
   public creatLogicLambda(params: ILambdaParams) {
     // const myBucket = new s3.Bucket(this.scope, 'Bucket');
+    type StringDictionary = { [key: string]: string };
+
+    const {
+      GOOGLE_AUTH,
+      DISCORD_TOKEN,
+      DISCORD_PUBLIC_KEY,
+      ID_FOLDER_GBA,
+      ID_FOLDER_GBC,
+      ID_FOLDER_GB,
+      ID_FOLDER_NES,
+      ID_FOLDER_SNES,
+      ID_FOLDER_64,
+      ID_FOLDER_GAMECUBE,
+      ID_FOLDER_DS,
+      ID_FOLDER_PSX,
+      ID_FOLDER_PS2,
+      ID_FOLDER_PSP,
+      ID_FOLDER_3DS,
+      ID_FOLDER_DREAMCAST,
+      ID_FOLDER_WII,
+      ID_FOLDER_SWITCH,
+      ID_FOLDER_GENESIS,
+      SAGIRI_TOKEN,
+    } = process.env;
 
     this.PDFLambdaNodeJSFunction = new NodejsFunction(this.scope, 'NodeJSPDF', {
       runtime: Runtime.NODEJS_16_X,
@@ -47,9 +71,28 @@ export class LambdaService extends BaseService {
       depsLockFilePath: path.join(__dirname, '..', '..', '..', 'yarn.lock'),
       memorySize: 1800,
       timeout: Duration.minutes(8),
-      // environment: {
-      //   S3_BUCKET_NAME: myBucket.bucketName,
-      // },
+      environment: {
+        GOOGLE_AUTH: GOOGLE_AUTH as string,
+        DISCORD_TOKEN: DISCORD_TOKEN as string,
+        DISCORD_PUBLIC_KEY: DISCORD_PUBLIC_KEY as string,
+        ID_FOLDER_GBA: ID_FOLDER_GBA as string,
+        ID_FOLDER_GBC: ID_FOLDER_GBC as string,
+        ID_FOLDER_GB: ID_FOLDER_GB as string,
+        ID_FOLDER_NES: ID_FOLDER_NES as string,
+        ID_FOLDER_SNES: ID_FOLDER_SNES as string,
+        ID_FOLDER_64: ID_FOLDER_64 as string,
+        ID_FOLDER_GAMECUBE: ID_FOLDER_GAMECUBE as string,
+        ID_FOLDER_DS: ID_FOLDER_DS as string,
+        ID_FOLDER_PSX: ID_FOLDER_PSX as string,
+        ID_FOLDER_PS2: ID_FOLDER_PS2 as string,
+        ID_FOLDER_PSP: ID_FOLDER_PSP as string,
+        ID_FOLDER_3DS: ID_FOLDER_3DS as string,
+        ID_FOLDER_DREAMCAST: ID_FOLDER_DREAMCAST as string,
+        ID_FOLDER_WII: ID_FOLDER_WII as string,
+        ID_FOLDER_SWITCH: ID_FOLDER_SWITCH as string,
+        ID_FOLDER_GENESIS: ID_FOLDER_GENESIS as string,
+        SAGIRI_TOKEN: SAGIRI_TOKEN as string,
+      },
     });
 
     // myBucket.grantReadWrite(this.PDFLambdaNodeJSFunction);
