@@ -3,6 +3,6 @@ const router: Router = Router();
 
 import { ping as pingController } from '../../../controllers/ping.controller';
 
-router.get('/', pingController);
+router.post('/', pingController);
 
 export default router;

@@ -31,32 +31,29 @@ export class LambdaService extends BaseService {
 
   constructor(scope: Construct, stageId: string) {
     super(scope, stageId);
-    this.createLambdaLayerPy();
   }
-
-  private createLambdaLayerPy() {}
 
   // Lambda - Py
   public creatLogicLambda(params: ILambdaParams) {
-    const myBucket = new s3.Bucket(this.scope, 'deco-PDF-Bucket');
+    // const myBucket = new s3.Bucket(this.scope, 'Bucket');
 
     this.PDFLambdaNodeJSFunction = new NodejsFunction(this.scope, 'NodeJSPDF', {
       runtime: Runtime.NODEJS_16_X,
-      entry: path.join(__dirname, '..', '..', 'PDF', 'src', 'handler.tsx'),
+      entry: path.join(__dirname, '..', '..', '..', 'src', 'handler.ts'),
       handler: 'handler',
       bundling: {
-        tsconfig: path.join(__dirname, '..', '..', 'PDF', 'tsconfig.json'),
+        tsconfig: path.join(__dirname, '..', '..', '..', 'tsconfig.json'),
       },
-      depsLockFilePath: path.join(__dirname, '..', '..', 'PDF', 'yarn.lock'),
+      depsLockFilePath: path.join(__dirname, '..', '..', '..', 'yarn.lock'),
       memorySize: 1800,
       timeout: Duration.minutes(8),
-      environment: {
-        S3_BUCKET_NAME: myBucket.bucketName,
-      },
+      // environment: {
+      //   S3_BUCKET_NAME: myBucket.bucketName,
+      // },
     });
 
-    myBucket.grantReadWrite(this.PDFLambdaNodeJSFunction);
-    myBucket.grantDelete(this.PDFLambdaNodeJSFunction);
+    // myBucket.grantReadWrite(this.PDFLambdaNodeJSFunction);
+    // myBucket.grantDelete(this.PDFLambdaNodeJSFunction);
 
     //create a function url from the lambda
     const lambdaNodeJSFunctionURL = new CfnUrl(
